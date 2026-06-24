@@ -1,4 +1,50 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+// Tema institucional verde (UFLA). As cores são emitidas com light-dark(),
+// então alternar `color-scheme` troca claro/escuro automaticamente.
+html {
+  color-scheme: light;
+  @include mat.theme((
+    color: (
+      primary: mat.$green-palette,
+      tertiary: mat.$spring-green-palette,
+    ),
+    typography: Roboto,
+    density: 0,
+  ));
+}
+
+html.dark {
+  color-scheme: dark;
+}
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+}
+
+* { box-sizing: border-box; }
+
+.page {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+
+  h1 {
+    font: var(--mat-sys-headline-small);
+    margin: 0;
+  }
+}
+
+.spacer { flex: 1 1 auto; }
