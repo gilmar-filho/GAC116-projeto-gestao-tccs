@@ -76,7 +76,13 @@ docker compose up --build
 Variáveis de ambiente do backend: `SECRET_KEY`, `DEBUG`, `ALLOWED_HOSTS`, `DATABASE_URL`.
 Ver `.env.example`.
 
-> Link da aplicação em produção: _(adicionar após o deploy)_
+**Aplicação em produção:**
+
+- Frontend: https://gestao-tccs-web.onrender.com
+- API: https://gestao-tccs.onrender.com/api/
+
+> O backend usa o plano gratuito do Render e hiberna após alguns minutos sem uso;
+> o primeiro acesso pode levar até ~1 minuto para "acordar" o serviço.
 
 ## Endpoints da API
 
