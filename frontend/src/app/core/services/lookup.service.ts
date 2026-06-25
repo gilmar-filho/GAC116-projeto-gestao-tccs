@@ -3,7 +3,8 @@ import { CursoService } from './curso.service';
 import { ProfessorService } from './professor.service';
 import { DepartamentoService } from './departamento.service';
 import { UnidadeAcademicaService } from './unidade-academica.service';
-import { Curso, Departamento, Professor, UnidadeAcademica } from '../models';
+import { AlunoService } from './aluno.service';
+import { Aluno, Curso, Departamento, Professor, UnidadeAcademica } from '../models';
 
 @Injectable({ providedIn: 'root' })
 export class LookupService {
@@ -11,17 +12,24 @@ export class LookupService {
   private professorService = inject(ProfessorService);
   private departamentoService = inject(DepartamentoService);
   private unidadeService = inject(UnidadeAcademicaService);
+  private alunoService = inject(AlunoService);
 
   readonly cursos = signal<Curso[]>([]);
   readonly professores = signal<Professor[]>([]);
   readonly departamentos = signal<Departamento[]>([]);
   readonly unidades = signal<UnidadeAcademica[]>([]);
+  readonly alunos = signal<Aluno[]>([]);
 
   carregar(): void {
     this.cursoService.getAll().subscribe((d) => this.cursos.set(d));
     this.professorService.getAll().subscribe((d) => this.professores.set(d));
     this.departamentoService.getAll().subscribe((d) => this.departamentos.set(d));
     this.unidadeService.getAll().subscribe((d) => this.unidades.set(d));
+    this.alunoService.getAll().subscribe((d) => this.alunos.set(d));
+  }
+
+  nomeAluno(id: number | null): string {
+    return this.nome(this.alunos(), id);
   }
 
   nomeCurso(id: number | null): string {

@@ -8,6 +8,11 @@ export const routes: Routes = [
       import('./features/dashboard/dashboard.component').then((m) => m.DashboardComponent),
   },
   {
+    path: 'tccs',
+    loadComponent: () =>
+      import('./features/tccs/tcc-list.component').then((m) => m.TccListComponent),
+  },
+  {
     path: 'unidades',
     loadComponent: () =>
       import('./features/unidades/unidade-list.component').then((m) => m.UnidadeListComponent),

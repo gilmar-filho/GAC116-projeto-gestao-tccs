@@ -12,8 +12,12 @@ export class TccService extends CrudService<TCC> {
     return this.http.post<TCC>(this.baseUrl, data);
   }
 
-  updateWithFile(id: number, data: FormData): Observable<TCC> {
-    return this.http.put<TCC>(`${this.baseUrl}${id}/`, data);
+  patch(id: number, data: Partial<TCC>): Observable<TCC> {
+    return this.http.patch<TCC>(`${this.baseUrl}${id}/`, data);
+  }
+
+  patchWithFile(id: number, data: FormData): Observable<TCC> {
+    return this.http.patch<TCC>(`${this.baseUrl}${id}/`, data);
   }
 
   arquivoUrl(tcc: TCC): string | null {
