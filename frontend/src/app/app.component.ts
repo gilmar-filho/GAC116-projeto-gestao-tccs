@@ -48,8 +48,8 @@ export class AppComponent implements OnInit {
   protected readonly navItems: NavItem[] = [
     { label: 'Dashboard', icon: 'dashboard', link: '/dashboard', disponivel: true },
     { label: 'TCCs', icon: 'description', link: '/tccs', disponivel: false },
-    { label: 'Alunos', icon: 'school', link: '/alunos', disponivel: false },
-    { label: 'Professores', icon: 'groups', link: '/professores', disponivel: false },
+    { label: 'Alunos', icon: 'school', link: '/alunos', disponivel: true },
+    { label: 'Professores', icon: 'groups', link: '/professores', disponivel: true },
     { label: 'Cursos', icon: 'menu_book', link: '/cursos', disponivel: true },
     { label: 'Departamentos', icon: 'apartment', link: '/departamentos', disponivel: true },
     { label: 'Unidades', icon: 'account_balance', link: '/unidades', disponivel: true },

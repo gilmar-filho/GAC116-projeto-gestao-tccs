@@ -24,5 +24,17 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./features/cursos/curso-list.component').then((m) => m.CursoListComponent),
   },
+  {
+    path: 'alunos',
+    loadComponent: () =>
+      import('./features/alunos/aluno-list.component').then((m) => m.AlunoListComponent),
+  },
+  {
+    path: 'professores',
+    loadComponent: () =>
+      import('./features/professores/professor-list.component').then(
+        (m) => m.ProfessorListComponent,
+      ),
+  },
   { path: '**', redirectTo: 'dashboard' },
 ];
