@@ -1,0 +1,60 @@
+<div class="page">
+  <div class="page-header">
+    <h1>Dashboard</h1>
+  </div>
+
+  @if (loading()) {
+    <div class="loading-state">
+      <mat-spinner diameter="48" />
+    </div>
+  } @else if (estat()) {
+    <div class="cards-grid">
+      @for (c of cards(); track c.label) {
+        <mat-card class="stat-card" appearance="outlined">
+          <div class="stat-icon" [style.background]="c.cor">
+            <mat-icon>{{ c.icon }}</mat-icon>
+          </div>
+          <div class="stat-body">
+            <span class="stat-valor">{{ c.valor | number }}</span>
+            <span class="stat-label">{{ c.label }}</span>
+          </div>
+        </mat-card>
+      }
+    </div>
+
+    <div class="charts-grid">
+      <mat-card class="chart-card" appearance="outlined">
+        <h2>Por status</h2>
+        <div class="chart-box">
+          <canvas baseChart type="doughnut" [data]="statusChart()" [options]="doughnutOptions"></canvas>
+        </div>
+      </mat-card>
+
+      <mat-card class="chart-card" appearance="outlined">
+        <h2>Por tipo</h2>
+        <div class="chart-box">
+          <canvas baseChart type="pie" [data]="tipoChart()" [options]="pieOptions"></canvas>
+        </div>
+      </mat-card>
+
+      <mat-card class="chart-card wide" appearance="outlined">
+        <h2>TCCs por semestre</h2>
+        <div class="chart-box">
+          <canvas baseChart type="bar" [data]="semestreChart()" [options]="barOptions"></canvas>
+        </div>
+      </mat-card>
+
+      <mat-card class="chart-card wide" appearance="outlined">
+        <h2>Top 10 orientadores</h2>
+        <div class="chart-box">
+          <canvas baseChart type="bar" [data]="orientadoresChart()" [options]="barHorizontalOptions"></canvas>
+        </div>
+      </mat-card>
+    </div>
+  } @else {
+    <div class="empty-state">
+      <mat-icon>bar_chart</mat-icon>
+      <p>Não foi possível carregar as estatísticas.</p>
+    </div>
+  }
+</div>
